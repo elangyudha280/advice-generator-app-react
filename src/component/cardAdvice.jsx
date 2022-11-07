@@ -1,6 +1,7 @@
 import react,{Component} from 'react'
 
 
+
 // component card
 
 class CardAdvice extends Component {
@@ -23,7 +24,7 @@ class CardAdvice extends Component {
         })
         .then(data_api =>{
             this.setState({
-                data:data_api.slip.advice,
+                data:data_api.slip,
                 isLoaded:true
             })
         })
@@ -37,11 +38,13 @@ class CardAdvice extends Component {
     render(){
         return(
             <section className="container">
-                <h2 className="title-card">Advice # <span className="rules-title">11</span></h2>
+                <h2 className="title-card">Advice # <span className="rules-title">{this.state.data.id}</span></h2>
                 <p className="kuotes">
                     "
                     <span className="kuotes-content">
-                    {this.state.data}
+                    {
+                     (!this.state.isLoaded) ? this.state.data  : this.state.data.advice
+                    }
                     </span>
                     ."
                 </p>
