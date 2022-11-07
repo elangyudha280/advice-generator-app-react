@@ -22,7 +22,6 @@ class CardAdvice extends Component {
             return Response.json()
         })
         .then(data_api =>{
-            console.log(data_api)
             this.setState({
                 data:data_api.slip.advice,
                 isLoaded:true
