@@ -6,6 +6,33 @@ import react,{Component} from 'react'
 class CardAdvice extends Component {
     constructor(props){
         super();
+        this.state = {
+            data:`It is easy to sit up and take notice,what's difficult is getting up and taking action.`,
+            isLoaded:false,
+        }
+    }
+
+
+    GetData = ()=>{
+        let random = Math.floor(Math.random() * 120);
+        fetch(`https://api.adviceslip.com/advice/${random}`).then(Response =>{
+            if(!Response.ok){
+                throw new Error('oops something wrong')
+            }
+            return Response.json()
+        })
+        .then(data_api =>{
+            console.log(data_api)
+            this.setState({
+                data:data_api.slip.advice,
+                isLoaded:true
+            })
+        })
+        .catch(err =>{
+            this.setState({
+                isLoaded:false,
+            })
+        })
     }
 
     render(){
@@ -15,12 +42,12 @@ class CardAdvice extends Component {
                 <p className="kuotes">
                     "
                     <span className="kuotes-content">
-                    It is easy to sit up and take notice,what's difficult is getting up and taking action
+                    {this.state.data}
                     </span>
                     ."
                 </p>
                 <img src="images/pattern-divider-desktop.svg" alt="" className="img-pattern " />
-                <button className="random">
+                <button className="random" onClick={this.GetData}>
                     <img src="images/icon-dice.svg" alt="" />
                 </button>
             </section>
