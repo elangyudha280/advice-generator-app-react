@@ -11,3 +11,100 @@ $font: 'Manrope', sans-serif;
   padding: 0;
   box-sizing: border-box;
 }
+
+// root element
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: $DarkBlue;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+// code for container card
+
+.container {
+  position: relative;
+  width: 450px;
+  padding: 2.5em 2em;
+  border-radius: 1.5em;
+  background: $darkgrayish;
+
+  // title card
+  .title-card {
+    color: $NeonGreen;
+    font-family: $font;
+    font-weight: 800;
+    font-size: 0.7em;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  // code kuotes
+  .kuotes {
+    color: #fff;
+    text-align: center;
+    margin-top: 0.8em;
+    font-weight: 800;
+    font-family: $font;
+    font-size: 1.5em;
+  }
+
+  // code for img pattern
+  .img-pattern {
+    width: 100%;
+    margin-top: 1.5em;
+    user-select: none;
+  }
+
+  // code for button random
+  .random {
+    position: absolute;
+    left: 50%;
+    bottom: -2em;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background: $NeonGreen;
+    cursor: pointer;
+    transition: 0.3s;
+    &:active {
+      transform-origin: center;
+      transform: translateX(-25px) scale(0.8);
+    }
+    &:hover {
+      box-shadow: 0 0 1.5em $NeonGreen;
+    }
+
+    img {
+      transform: scale(0.9);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #root {
+    padding: 1em 1em;
+  }
+  .container {
+    width: 100%;
+
+    .kuotes {
+      font-size: 1.3em;
+    }
+  }
+}
+
+@media screen and (max-height: 400px) {
+  #root {
+    height: 500px;
+    padding: 2em;
+  }
+}
