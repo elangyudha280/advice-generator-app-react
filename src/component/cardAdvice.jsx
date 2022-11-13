@@ -23,10 +23,10 @@ class CardAdvice extends Component {
             return Response.json()
         })
         .then(data_api =>{
-            this.setState({
-                data:data_api.slip,
-                isLoaded:true
-            })
+        this.setState({ 
+            data:data_api.slip,
+            isLoaded:true
+        })
         })
         .catch(err =>{
             this.setState({
@@ -38,12 +38,13 @@ class CardAdvice extends Component {
     render(){
         return(
             <section className="container">
-                <h2 className="title-card">Advice # <span className="rules-title">{this.state.data.id}</span></h2>
+                <h2 className="title-card">Advice # <span className="rules-title">{(this.state.data === undefined) ? '0' : this.state.data.id}</span></h2>
                 <p className="kuotes">
                     "
                     <span className="kuotes-content">
+                        {console.log(this.state.data)}
                     {
-                     (!this.state.isLoaded) ? this.state.data  : this.state.data.advice
+                     (!this.state.isLoaded) ?  this.state.data : (this.state.data === undefined) ? 'oops advice not found' : this.state.data.advice
                     }
                     </span>
                     ."
