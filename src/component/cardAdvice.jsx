@@ -42,7 +42,6 @@ class CardAdvice extends Component {
                 <p className="kuotes">
                     "
                     <span className="kuotes-content">
-                        {console.log(this.state.data)}
                     {
                      (!this.state.isLoaded) ?  this.state.data : (this.state.data === undefined) ? 'oops advice not found' : this.state.data.advice
                     }
